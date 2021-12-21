@@ -28,4 +28,25 @@ public class DBConnection {
         }
 
     }
+    public static Connection con = null;
+    public static Connection getConnection() {
+        try {
+            if(con == null){
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://database-1.cog3jk7pua93.us-east-2.rds.amazonaws.com:3306/daycaredb", "admin",
+                        "Namrataisbad");
+                return con;
+            }
+            else{
+                return con;
+            }
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return con;
+        }
+
+    }
 }
